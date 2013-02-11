@@ -29,6 +29,12 @@ namespace PayPal.Authentication
         /// </summary>
         private string sign;
 
+		/// <summary>
+		/// Endpoint
+		/// </summary>
+		private string endpoint;
+		public string Endpoint { get { return endpoint; } }
+
         /// <summary>
         /// Instance of IThirdPartyAuthorization
         /// </summary>
@@ -40,7 +46,7 @@ namespace PayPal.Authentication
         /// <param name="usrName"></param>
         /// <param name="pssword"></param>
         /// <param name="sign"></param>
-        public SignatureCredential(string usrName, string pssword, string sign) 
+		public SignatureCredential(string usrName, string pssword, string sign, string endpoint = null) 
             : base()
         {
             if (string.IsNullOrEmpty(usrName) || string.IsNullOrEmpty(pssword) ||
@@ -51,6 +57,7 @@ namespace PayPal.Authentication
             this.usrName = usrName;
             this.pasWord = pssword;
             this.sign = sign;
+			this.endpoint = endpoint;
         }
 
         /// <summary>

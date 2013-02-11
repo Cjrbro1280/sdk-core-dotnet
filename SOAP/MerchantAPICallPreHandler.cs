@@ -224,6 +224,9 @@ namespace PayPal.SOAP
         {
             if (PortName == null || string.IsNullOrEmpty(ConfigManager.Instance.GetProperty(PortName)))
             {
+				if (credential is SignatureCredential && ((SignatureCredential)credential).Endpoint != null)
+					return ((SignatureCredential)credential).Endpoint;
+
                 return apiCallHandler.GetEndPoint();
             }
             return ConfigManager.Instance.GetProperty(PortName);
